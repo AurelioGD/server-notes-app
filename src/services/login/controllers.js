@@ -1,5 +1,6 @@
 const dto=require('./dto')
 const bcrypt=require('bcrypt')
+const jwt=require('jsonwebtoken')
 
 const login = async (req,res)=>{
     const { username, password } = req.body
@@ -14,7 +15,19 @@ const login = async (req,res)=>{
 
     if(!passComprobation) return res.json({error:"username or password missing or invalid"})
 
-    res.json({user:dataUser[0]})
+    let token=null;
+
+    const dataUserForJWT={
+        id:dataUser[0]._id,
+        name:dataUser[0].name,
+        username:dataUser[0].username
+    }
+    try {
+        token = await jwt.sign(dataUserForJWT,process.env.SECRET)
+    }catch(e){
+        console.log(e)
+    }
+    res.json({...dataUserForJWT,token})
 }
 
 
