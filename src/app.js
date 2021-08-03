@@ -1,9 +1,13 @@
 const express=require('express')
 const app=express()
 const mongoose = require('mongoose');
+const morgan = require('morgan');
 
 //importing routes
 const Routes= require('./routes/index.js')
+
+app.use(express.urlencoded({extended:true}))
+app.use(morgan('dev'))
 
 //connecting with mongodb
 mongoose.connect('mongodb://localhost:27017/notesapp', {useNewUrlParser: true, useUnifiedTopology: true})
@@ -11,7 +15,7 @@ mongoose.connect('mongodb://localhost:27017/notesapp', {useNewUrlParser: true, u
     .catch((e)=>console.log(e))
 
 //using the routes
-app.use(Routes)
+app.use('/api',Routes)
 
 
 module.exports=app;

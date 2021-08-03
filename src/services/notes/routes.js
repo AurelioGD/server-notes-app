@@ -1,10 +1,10 @@
 const { Router } = require('express');
 const router = Router()
 
-const { getnotes } = require('./controllers.js')
+const controllers = require('./controllers.js')
 
 
-router.get('/getnotes', getnotes)
+router.get('/all', controllers.getAllNotes)
 
 
 module.exports = router;
