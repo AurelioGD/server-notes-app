@@ -27,7 +27,7 @@ const login = async (req,res)=>{
     }catch(e){
         console.log(e)
     }
-    res.json({...dataUserForJWT,token})
+    res.json({...dataUserForJWT,token,error:false})
 }
 
 
