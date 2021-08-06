@@ -41,7 +41,7 @@ const register= async (req,res)=>{
 
     const userCreated = await dto.createOneUser(name,username,password)
     
-    res.json(userCreated)
+    res.json({...userCreated,error:false})
 }
 
 
