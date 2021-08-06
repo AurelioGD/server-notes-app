@@ -1,4 +1,4 @@
-const Note = require('../../models/note.js')
+const Note = require('../../models/Note.js')
 
 const getAllNotes = () =>{
     try {
