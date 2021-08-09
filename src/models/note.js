@@ -5,6 +5,7 @@ const Schema=mongoose.Schema;
 const noteSchema = new Schema({
     title:String,
     description:String,
+    favorite:Boolean,
     userId: Schema.Types.ObjectId
 })
 
