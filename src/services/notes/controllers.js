@@ -18,7 +18,7 @@ const createNewNote = async(req,res)=>{
 
     const newNote = await dto.createNewNote({title,description,favorite,userId})
     
-    res.json({newNote})
+    res.json({newNote,error:false})
 }
 module.exports={
     getAllNotes,
