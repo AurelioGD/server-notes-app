@@ -8,6 +8,7 @@ const controllers = require('./controllers.js')
 
 router.get('/all',JWTGetUser, controllers.getAllNotes)
 router.get('/favorites',JWTGetUser, controllers.getFavoriteNotes)
+router.post('/newnote',JWTGetUser, controllers.createNewNote)
 
 
 module.exports = router;

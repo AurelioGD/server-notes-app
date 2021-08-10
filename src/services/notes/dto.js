@@ -16,7 +16,13 @@ const getFavoriteNotes = (userId)=>{
         console.log(error)
     }
 }
+const createNewNote=(contentNote)=>{
+    const newNote = new Note(contentNote)
+    const noteCreated = newNote.save();
+    return noteCreated;
+}
 module.exports={
     getAllNotes,
-    getFavoriteNotes
+    getFavoriteNotes,
+    createNewNote
 }
