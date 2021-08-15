@@ -17,12 +17,34 @@ const getFavoriteNotes = (userId)=>{
     }
 }
 const createNewNote=(contentNote)=>{
+
     const newNote = new Note(contentNote)
+
     const noteCreated = newNote.save();
+
     return noteCreated;
+
+}
+const toggleFavorite= async (noteId)=>{
+
+    const noteToChange= await Note.find({_id:noteId})
+
+    const {favorite}=noteToChange[0];
+
+    const updateNote= Note.updateOne({_id:noteId},{favorite:!favorite})
+
+    return updateNote;
+
+}
+const updateNote=(dataToReplace)=>{
+    const {noteId,title,description}=dataToReplace;
+    const noteUpdated=Note.updateOne({_id:noteId},{title,description})
+    return noteUpdated
 }
 module.exports={
     getAllNotes,
     getFavoriteNotes,
-    createNewNote
+    createNewNote,
+    toggleFavorite,
+    updateNote
 }

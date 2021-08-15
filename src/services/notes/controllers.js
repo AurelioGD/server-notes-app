@@ -20,8 +20,26 @@ const createNewNote = async(req,res)=>{
     
     res.json({newNote,error:false})
 }
+const toggleFavorite =  async(req,res)=>{
+    const { noteId }=req.body
+
+    if(!noteId) { return res.json({error:true,message:"an error ocurred"}) }
+
+    const noteChanged= await dto.toggleFavorite(noteId)
+
+    res.json({noteChanged,error:false})
+}
+const updateNote= async (req,res)=>{
+    const { noteId ,title, description } = req.body;
+    if(!title || !description || !noteId) { return res.json({error:true,message:"an error ocurred"}) }
+    const noteUpdated= await dto.updateNote({noteId,title,description})
+    res.json({noteUpdated,error:false})
+}   
+
 module.exports={
     getAllNotes,
     getFavoriteNotes,
-    createNewNote
+    createNewNote,
+    toggleFavorite,
+    updateNote
 }
