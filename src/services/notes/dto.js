@@ -41,10 +41,15 @@ const updateNote=(dataToReplace)=>{
     const noteUpdated=Note.updateOne({_id:noteId},{title,description})
     return noteUpdated
 }
+const deleteNote=(noteId)=>{
+    const responseDB = Note.deleteOne({_id:noteId})
+    return responseDB;
+}
 module.exports={
     getAllNotes,
     getFavoriteNotes,
     createNewNote,
     toggleFavorite,
-    updateNote
+    updateNote,
+    deleteNote
 }

@@ -11,6 +11,7 @@ router.get('/favorites',JWTGetUser, controllers.getFavoriteNotes)
 router.post('/newnote',JWTGetUser, controllers.createNewNote)
 router.post('/togglefavorite',JWTGetUser, controllers.toggleFavorite)
 router.post('/updatenote',JWTGetUser, controllers.updateNote)
+router.post('/delete',JWTGetUser, controllers.deleteNote)
 
 
 module.exports = router;
